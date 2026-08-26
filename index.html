@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b14">
+<title>DocScan — Premium Document Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">DS</div><div><strong>DocScan</strong><span>DOCUMENT STUDIO</span></div></div>
+    <div class="doc-title"><input id="docTitle" value="Untitled document" aria-label="Document name"><span id="status">Local</span></div>
+    <div class="top-actions">
+      <button class="ghost" id="undoBtn" disabled>↶</button>
+      <button class="ghost" id="redoBtn" disabled>↷</button>
+      <label class="button secondary">Import <input id="fileInput" type="file" accept="image/*,application/pdf,.pdf" multiple hidden></label>
+      <button class="button secondary" id="cameraBtn">Camera</button>
+      <button class="button primary" id="exportBtn" disabled>Export PDF</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="rail">
+      <button class="rail-item active" data-view="scan"><span>▣</span>Scan</button>
+      <button class="rail-item" data-view="pages"><span>▤</span>Pages</button>
+      <button class="rail-item" data-view="pdf"><span>▥</span>PDF Studio</button>
+      <button class="rail-item" data-view="ocr"><span>⌕</span>OCR</button>
+      <button class="rail-item" data-view="compress"><span>◌</span>Compress</button>
+      <div class="rail-divider"></div>
+      <button class="rail-item" data-tool="crop">Crop</button>
+      <button class="rail-item" data-tool="enhance">Enhance</button>
+      <button class="rail-item" data-tool="filters">Filters</button>
+      <button class="rail-item" data-tool="rotate">Rotate</button>
+      <button class="rail-item" data-tool="annotate">Annotate</button>
+      <button class="rail-item" data-tool="text">Text</button>
+      <button class="rail-item" data-tool="signature">Signature</button>
+      <div class="rail-spacer"></div>
+      <button class="rail-item" data-view="settings">Settings</button>
+    </aside>
+
+    <main class="content">
+      <section class="view active" id="scanView">
+        <div class="editor-shell">
+          <div class="thumbs" id="thumbs"></div>
+          <div class="canvas-area">
+              <div class="viewer-controls" id="viewerControls">
+                <button class="viewer-btn" id="zoomOut">−</button>
+                <span id="zoomLabel">100%</span>
+                <button class="viewer-btn" id="zoomIn">+</button>
+                <button class="viewer-btn" id="fitPage">Fit</button>
+                <button class="viewer-btn" id="actualSize">100%</button>
+                <button class="viewer-btn" id="fullscreenPreview">⛶</button>
+              </div>
+            <div class="empty-state" id="emptyState">
+              <div class="hero-art"><img src="assets/hero-scanner.svg" alt="Premium document scanner illustration"></div>
+              <div class="eyebrow">PRIVATE • FAST • BROWSER BASED</div>
+              <h1>Turn paper into<br><em>perfect documents.</em></h1>
+              <p>Scan, enhance, organize, OCR, compress and export professional PDFs from one elegant workspace.</p>
+              <div class="hero-actions">
+                <button class="button primary large" id="startScan">Scan with camera</button>
+                <label class="button secondary large">Import documents<input id="heroInput" type="file" accept="image/*,application/pdf,.pdf" multiple hidden></label>
+              </div>
+              <div class="drop" id="dropZone">Drop images or PDF files here</div>
+              <div class="visual-strip"><div><b>01</b><span>Capture</span></div><div><b>02</b><span>Perfect</span></div><div><b>03</b><span>Organize</span></div><div><b>04</b><span>Export</span></div></div><div class="trust"><span>✓ Multi-page</span><span>✓ OCR</span><span>✓ PDF tools</span><span>✓ Compression</span><span>✓ Local processing</span></div>
+            </div>
+            <div class="stage-wrap hidden" id="stageWrap">
+              <div class="stage" id="stage">
+                <canvas id="pageCanvas"></canvas>
+                <canvas id="overlay"></canvas>
+                <div class="crop-note hidden" id="cropNote">Select four corners in order</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-toolbar hidden" id="bottomToolbar"></div>
+      </section>
+
+      <section class="view" id="pagesView">
+        <div class="view-head"><div><div class="eyebrow">DOCUMENT</div><h2>Page manager</h2><p>Reorder, duplicate, rotate and remove pages.</p></div><label class="button primary">＋ Add pages<input id="addInput" type="file" accept="image/*,application/pdf,.pdf" multiple hidden></label></div>
+        <div class="page-grid" id="pageGrid"></div>
+      </section>
+
+      <section class="view" id="pdfView">
+        <div class="view-head"><div><div class="eyebrow">PDF STUDIO</div><h2>Build the final document.</h2><p>Merge, extract, reorder, rotate and export in one workflow.</p></div></div>
+        <div class="premium-banner"><div><div class="eyebrow">PDF ENGINE</div><h3>One polished workspace for every page.</h3><p>Build clean, professional documents without leaving your browser.</p></div><img src="assets/pdf-studio.svg" alt="PDF studio illustration"></div><div class="pdf-viewer-card">
+      <div class="pdf-viewer-head">
+        <div><div class="eyebrow">LIVE PREVIEW</div><strong>Document viewer</strong><span id="pdfPageInfo">No document loaded</span></div>
+        <div class="viewer-actions">
+          <button class="viewer-btn" id="pdfPrev">‹</button><button class="viewer-btn" id="pdfNext">›</button>
+          <button class="viewer-btn" id="pdfZoomOut">−</button><span id="pdfZoomLabel">100%</span><button class="viewer-btn" id="pdfZoomIn">+</button>
+        </div>
+      </div>
+      <div class="pdf-viewer-body" id="pdfViewerBody"><div class="viewer-empty">Import a PDF or document to see a live preview here.</div></div>
+    </div><div class="feature-grid">
+          <article class="feature-card"><span class="feature-icon">＋</span><h3>Merge & export</h3><p>Combine imported PDFs and images into a single polished PDF.</p><button class="button secondary" id="mergeBtn">Create PDF</button></article>
+          <article class="feature-card"><span class="feature-icon">↗</span><h3>Extract pages</h3><p>Export selected page numbers into a separate PDF.</p><button class="button secondary" id="extractBtn">Extract</button></article>
+          <article class="feature-card"><span class="feature-icon">↕</span><h3>Page order</h3><p>Drag pages in Page Manager to change the final sequence.</p><button class="button secondary" data-go="pages">Open pages</button></article>
+          <article class="feature-card"><span class="feature-icon">⚙</span><h3>Export quality</h3><p>Choose high, balanced, small or very small PDF image quality.</p><select id="pdfQuality"><option value=".92">High quality</option><option value=".78" selected>Balanced</option><option value=".62">Small</option><option value=".45">Very small</option></select></article>
+        </div>
+      </section>
+
+      <section class="view" id="ocrView">
+        <div class="view-head"><div><div class="eyebrow">OCR</div><h2>Extract editable text.</h2><p>OCR is loaded only when you use it.</p></div><button class="button primary" id="ocrBtn" disabled>Recognize current page</button></div>
+        <div class="ocr-grid"><div class="ocr-image" id="ocrImage"></div><textarea id="ocrText" placeholder="Recognized text will appear here…"></textarea></div>
+        <div class="inline-actions"><button class="button secondary" id="copyOcr">Copy text</button><button class="button secondary" id="saveOcr">Save TXT</button><span id="ocrStatus"></span></div>
+      </section>
+
+      <section class="view" id="compressView">
+        <div class="view-head"><div><div class="eyebrow">OPTIMIZE</div><h2>Make files dramatically smaller.</h2><p>Choose a target and let the browser search for a practical result.</p></div></div>
+        <div class="compress-panel">
+          <div class="control"><label>Target size</label><select id="targetSize"><option value="30720">Below 30 KB</option><option value="51200">Below 50 KB</option><option value="102400">Below 100 KB</option><option value="204800">Below 200 KB</option><option value="512000">Below 500 KB</option><option value="1048576">Below 1 MB</option><option value="0">Smallest practical</option></select></div>
+          <div class="control"><label>Maximum dimension <b id="dimensionLabel">1800 px</b></label><input id="maxDimension" type="range" min="600" max="3200" step="100" value="1800"></div>
+          <div class="control"><label>JPEG quality <b id="qualityLabel">70%</b></label><input id="quality" type="range" min="5" max="95" value="70"></div>
+          <div class="inline-actions"><button class="button primary" id="compressImageBtn" disabled>Compress image</button><button class="button secondary" id="compressPdfBtn" disabled>Compress PDF</button></div>
+          <div class="result" id="compressResult"></div>
+        </div>
+      </section>
+
+      <section class="view" id="settingsView">
+        <div class="view-head"><div><div class="eyebrow">PREFERENCES</div><h2>Workspace settings</h2><p>Simple controls for a private browser-first workflow.</p></div></div>
+        <div class="settings-card">
+          <label><input type="checkbox" checked id="autoEnhance"> Auto-enhance imported scans</label>
+          <label><input type="checkbox" checked id="localMode"> Keep files local to this browser</label>
+          <p>DocScan Premium does not upload files in this static version. Camera, image editing, PDF rendering and compression happen on the device. OCR/PDF libraries are loaded only when those tools are used.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="modal hidden" id="cameraModal">
+  <div class="modal-card">
+    <div class="modal-title"><h3>Document camera</h3><button class="close" id="closeCamera">×</button></div>
+    <video id="video" autoplay playsinline></video>
+    <div class="camera-actions"><button class="button secondary" id="flipCamera">Flip camera</button><button class="button primary large" id="capture">Capture page</button></div>
+    <small id="cameraStatus"></small>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<svg width="760" height="430" viewBox="0 0 760 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="p" x1="100" y1="60" x2="650" y2="370" gradientUnits="userSpaceOnUse"><stop stop-color="#8474FF"/><stop offset="1" stop-color="#54A4FF"/></linearGradient>
+ <filter id="s"><feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#000" flood-opacity=".35"/></filter>
+</defs>
+<rect x="92" y="48" width="420" height="325" rx="22" fill="#121C2D" stroke="#34445F"/>
+<g filter="url(#s)">
+ <rect x="130" y="70" width="180" height="250" rx="10" fill="#F5F7FB"/>
+ <rect x="335" y="70" width="180" height="250" rx="10" fill="#E6EBF4"/>
+</g>
+<rect x="165" y="112" width="110" height="12" rx="6" fill="#B6C2D4"/>
+<rect x="165" y="141" width="140" height="9" rx="4" fill="#D4DCE8"/>
+<rect x="165" y="166" width="125" height="9" rx="4" fill="#D4DCE8"/>
+<rect x="165" y="213" width="110" height="48" rx="8" fill="#E8ECF4"/>
+<path d="M390 205H462M390 230H480M390 255H450" stroke="#B5C0D2" stroke-width="9" stroke-linecap="round"/>
+<rect x="530" y="275" width="150" height="76" rx="19" fill="#17253B" stroke="#3A506F"/>
+<circle cx="562" cy="313" r="13" fill="url(#p)"/>
+<path d="M589 305H645M589 323H625" stroke="#93A5C1" stroke-width="9" stroke-linecap="round"/>
+<path d="M553 105V50M553 50L530 73M553 50L576 73" stroke="url(#p)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

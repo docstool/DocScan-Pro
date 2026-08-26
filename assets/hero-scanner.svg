@@ -1,0 +1,29 @@
+<svg width="900" height="520" viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="g" x1="120" y1="70" x2="790" y2="450" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#8B7CFF"/><stop offset=".5" stop-color="#5B8DFF"/><stop offset="1" stop-color="#35D7C0"/>
+ </linearGradient>
+ <linearGradient id="paper" x1="260" y1="70" x2="660" y2="450" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE5F4"/>
+ </linearGradient>
+ <filter id="shadow" x="150" y="25" width="600" height="480" filterUnits="userSpaceOnUse">
+  <feDropShadow dx="0" dy="25" stdDeviation="25" flood-color="#000" flood-opacity=".42"/>
+ </filter>
+ <filter id="glow"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<circle cx="450" cy="260" r="190" fill="url(#g)" opacity=".16" filter="url(#glow)"/>
+<rect x="215" y="55" width="470" height="405" rx="30" fill="#111827" stroke="#34435F"/>
+<g filter="url(#shadow)">
+ <rect x="268" y="78" width="365" height="355" rx="12" transform="rotate(-6 268 78)" fill="url(#paper)"/>
+ <rect x="325" y="140" width="245" height="13" rx="6" transform="rotate(-6 325 140)" fill="#AAB8CE"/>
+ <rect x="318" y="173" width="275" height="10" rx="5" transform="rotate(-6 318 173)" fill="#CBD5E4"/>
+ <rect x="312" y="201" width="225" height="10" rx="5" transform="rotate(-6 312 201)" fill="#CBD5E4"/>
+ <rect x="305" y="254" width="275" height="72" rx="9" transform="rotate(-6 305 254)" fill="#EEF2F8"/>
+ <path d="M335 290L365 312L410 260L446 292L488 242L548 315" stroke="#6D78FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="585" y="360" width="165" height="68" rx="18" fill="#17243A" stroke="#405476"/>
+<circle cx="615" cy="394" r="12" fill="#4DE0B5"/>
+<rect x="640" y="385" width="76" height="10" rx="5" fill="#8EA0BC"/>
+<rect x="640" y="403" width="54" height="8" rx="4" fill="#566A88"/>
+<path d="M190 130L160 130M190 160L145 160M710 130L740 130M710 160L755 160M190 370L155 370M710 370L745 370" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+</svg>
